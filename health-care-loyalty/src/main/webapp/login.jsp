@@ -16,6 +16,7 @@
                   <form action="/login" method="post">
                       	<p style="color:red" align="center">${errormsg}</p>  
                       	<p style="color:green" align="center">${adminlogout}</p> 
+                      	<p style="color: green" align="center">${successMessage}</p>
                      <div class="row">
                          <div class="col-md-12">
                              <div class="form-group">
@@ -34,6 +35,14 @@
                      	 <div class="col-md-3"></div>
                          <div class="col-md-6">
                               <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button>
+                         </div>
+                         <div class="col-md-3"></div>
+                     </div>
+                     <br>
+                     <div class="row">
+                     	 <div class="col-md-2"></div>
+                         <div class="col-md-8">
+                              <a class="btn btn-success btn-block loginbtn" href="<c:url value='/doctor/guestAppointment' />">Book appointment as guest</a>
                          </div>
                          <div class="col-md-3"></div>
                      </div>

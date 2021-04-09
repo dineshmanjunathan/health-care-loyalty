@@ -32,10 +32,9 @@ $(document).ready(function(){
     });
     
     $("#doctor").change(function(){
-    	  $("input[name='doctorId']").val($(this).val())
-    	});
+  	  $("input[name='doctorId']").val($(this).val())
+  	});
 });
-
 
 </script>
 </head>
@@ -46,84 +45,51 @@ $(document).ready(function(){
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="product-payment-inner-st">
 					<ul id="myTabedu1" class="tab-review-design">
-						<li class="active"><a href="">Book Patient Appointment</a></li>
+						<li class="active"><a href="">Request An Appointment</a></li>
 					</ul>
 					<div class="payment-adress">
 						<a
 							class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2"
-							href="/menu" type="submit" name="submit"
+							href="/login" type="submit" name="submit"
 							value="adminListing">Back</a>
 					</div>
 					<!-- </form> -->
-
 					<div id="myTabContent" class="tab-content custom-product-edit">
 						<div class="product-tab-list tab-pane fade active in"
 							id="description">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="review-content-section">
-										<c:choose>
-											<c:when test="${not empty appointment}">
-												<c:url var="action" value="/appointment/edit" />
-											</c:when>
-											<c:otherwise>
-												<c:url var="action" value="/appointment/save" />
-											</c:otherwise>
-										</c:choose>
+									
 											<div id="dropzone1" class="pro-ad">
-
-												<p style="color: green" align="center">${successMessage}</p>
-												<p style="color: red" align="center">${deletesuccessmessage}</p>
-												
-												<div class="row">
-													<div class=" well col-lg-6 col-md-6 col-sm-6 col-xs-12">
-														<form action="/searchUser" method="POST">
-															<div class="form-group">
-																<select name="searchOption" class="form-control">
-																	<option value="">Search by</option>
-																	<option value="id">Patient Id</option>
-																	<option value="mobile">Mobile no</option>
-																</select>
-															</div>
-															<div class="form-group">
-																<input name="searchBy" type="text" class="form-control"
-																	placeholder="Search By" value=""
-																	required>
-															</div>
-
-															<button
-																class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2"
-																type="submit">Search</button>
-														</form>
-													</div>
-													<c:if test="${not empty user }">
-													
-													<div class=" well col-lg-6 col-md-6 col-sm-6 col-xs-12">
-															<div class="form-group">
-																<label>Patient Name : </label> ${user.name }
-															</div>
-															<div class="form-group"> 
-															<label>Patient Mobile No : </label> ${user.mobile }
-															</div>
-															
-															<div class="form-group"> 
-															<label>Patient Address : </label>${user.address }
-															</div>		
-															<input type="hidden" id="patientName" name ="patientName" value="${user.name }">
-															<input type="hidden" id="patientMobile" name ="patientMobile" value="${user.mobile }">
-															<input type="hidden" id="patientAddress" name ="patientAddress" value="${user.address }">																										
-													</div>
-													</c:if>
-												</div>
-												
-												<c:if test="${not empty user }">
 												<div class="row">
 													<div class="well col-md-6 col-md-offset-3">
-														<form action="${action}" method="POST">
-														<input type="hidden" id="name" name ="name" value="${user.name }">
-															<input type="hidden" id="mobile" name ="mobile" value="${user.mobile }">
-															<input type="hidden" id="address" name ="address" value="${user.address }">
-															<input type="hidden" id="patientID" name ="patientID" value="${user.id}">
+														<form action="/appointment/guest/save" method="POST" onsubmit="return ValidateForm(this);">
+														<div class="form-group">
+																<input name="name" type="text" class="form-control"
+																	placeholder="Full Name"
+																	required>
+															</div>
+															<div class="form-group">
+																<input name="address" type="text" class="form-control"
+																	placeholder="Address"
+																	required>
+															</div>
+															<div class="form-group">
+																<input name="age" type="number" class="form-control"
+																	placeholder="Age"
+																	required>
+															</div>
+															<div class="form-group">
+																<input name="mobile" type="tel" class="form-control"
+																	placeholder="Mobile Number" 
+																	required>
+															</div>
+															<div class="form-group">
+																<input name="email" type="email" class="form-control"
+																	placeholder="Email Id" >
+															</div>
+														
 															<div class="form-group">
 																<select name="category" id="category" class="form-control">
 																	<option value="">-Select Category-</option>
@@ -139,15 +105,15 @@ $(document).ready(function(){
 																	<option value="">-Select Doctor-</option>
 																	<c:forEach var="options" items="${doctorsList}"
 																		varStatus="status">
-																		<%-- <option value="${options.id}">${options.name}</option> --%>
+																		 <option value="${options.id}">${options.name}</option>
 																	</c:forEach>
 																</select>
 															</div>
-															<input name="doctorId" type="hidden" id="doctorId">
+															<input type="hidden" name="doctorId" id="doctorId">
 															
 															<div class="form-group">
 																<input name="appointmentDate" type="date" class="form-control"
-																	placeholder="Select" 
+																	placeholder="Select"
 																	required>
 															</div>
 															
@@ -167,6 +133,10 @@ $(document).ready(function(){
 																	 </optgroup>
 																</select>
 															</div>
+															<div class="form-group">
+																<input name="description" type="text" class="form-control"
+																	placeholder="Description" >
+															</div>
 
 															<button
 																class="btn btn-primary waves-effect waves-light col-md-offset-9 col-md-3"
@@ -174,10 +144,8 @@ $(document).ready(function(){
 														</form>
 													</div>
 												</div>
-												</c:if>
 												
-												</div>
-												
+												</div>	
 									</div>
 								</div>
 							</div>

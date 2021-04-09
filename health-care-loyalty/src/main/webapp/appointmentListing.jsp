@@ -51,19 +51,23 @@
                                         data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                      <thead>
 										<tr> 
-											<th data-field="id">Patient Id</th>
-											<th data-field="name" data-editable="false">Name</th>
+											<th data-field="name" data-editable="false">Patient Name</th>
+											<th data-field="mNumber" data-editable="false">Mobile Number</th>
+											<th data-field="doctorName" data-editable="false">Doctor</th>
+											<th data-field="appointedDateTime" data-editable="false">Appointed Date/Time</th>
 											<th data-field="action">Action</th>
 										</tr>
 									</thead>
                                         <tbody> 
                                         <c:forEach var="details" items="${appointmentList}" varStatus="status">
                                             <tr>
-												<td>${details.id}</td>
-												<td>${details.name}</td> 
-                                                <td><a href="<c:url value='/appointment/edit?id=${details.id}' />"><center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a>
+												<td>${details.userMaster.name} [${details.userMaster.id}]</td>
+												<td>${details.userMaster.mobile}</td>
+												<td>${details.doctorDetails.name} [${details.doctorDetails.category.categoryDesc}]</td>
+												<td>${details.appointmentDate} [${details.appointmentTime}]</td>
+                                                <td><a href="<c:url value='/appointment/edit?id=${details.userMaster.id}' />"><center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a>
 		        								 <a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" 
-		        								 href="<c:url value='/appointment/delete?id=${details.id}' />" >
+		        								 href="<c:url value='/appointment/delete?id=${details.userMaster.id}' />" >
 		        								  <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 
 		        								  
 		        								  

@@ -4,14 +4,14 @@ package com.hc.app.vo;
 public class AppointmentVo {
 
 	private Long id;
-	private String name;
-	private String mobile;
-	private String address;
-	private String category;
-	private String doctor;
+	private Long category;
+	private Long doctor;
 	private String doctorName;
 	private String appointmentDate;
 	private String appointmentTime;
+	private Long patientID;
+	private String description;
+	private String doctorId;
 	
 	public Long getId() {
 		return id;
@@ -20,35 +20,16 @@ public class AppointmentVo {
 		this.id = id;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getMobile() {
-		return mobile;
-	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getCategory() {
+	public Long getCategory() {
 		return category;
 	}
-	public void setCategory(String categoryId) {
-		this.category = category;
+	public void setCategory(Long categoryId) {
+		this.category = categoryId;
 	}
-	public String getDoctor() {
+	public Long getDoctor() {
 		return doctor;
 	}
-	public void setDoctor(String doctor) {
+	public void setDoctor(Long doctor) {
 		this.doctor = doctor;
 	}
 	public String getDoctorName() {
@@ -69,5 +50,24 @@ public class AppointmentVo {
 	public void setAppointmentTime(String appointmentTime) {
 		this.appointmentTime = appointmentTime;
 	}
-
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Long getPatientID() {
+		return patientID;
+	}
+	public void setPatientID(Long patientID) {
+		this.patientID = patientID;
+	}
+	public String getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
+	}
+	
+	
 }
