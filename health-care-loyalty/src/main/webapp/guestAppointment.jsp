@@ -60,37 +60,52 @@ $(document).ready(function(){
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="review-content-section">
-									
-											<div id="dropzone1" class="pro-ad">
-												<div class="row">
-													<div class="well col-md-6 col-md-offset-3">
-														<form action="/appointment/guest/save" method="POST" onsubmit="return ValidateForm(this);">
+										<form action="/appointment/guest/save" method="POST" onsubmit="return ValidateForm(this);">
+												<div class="well row">
+													<div class=" col-lg-6 col-md-5 col-sm-6 col-xs-12">
+														<div class="form-group"></div>
 														<div class="form-group">
-																<input name="name" type="text" class="form-control"
-																	placeholder="Full Name"
+															<input name="name" type="text" class="form-control"
+																placeholder="Full Name" required>
+														</div>
+														<div class="form-group">
+															<input name="age"
+																type="number" class="form-control"
+																placeholder="Age" required>
+														</div>
+
+														<div class="form-group">
+															<input name="email" type="text" class="form-control"
+																placeholder="Email" required>
+														</div>
+
+														<div class="form-group">
+															<textarea class="form-control" rows="5" id="address" placeholder="Address & Pincode"
+																name="address"></textarea>
+														</div>
+														<div class="form-group">
+															<div class=" col-md-6">
+																	<select name="countryCode" class="form-control">
+																		<option value="">Country Code</option>
+																		<c:forEach var="options" items="${countryCodeList}"
+																			varStatus="status">
+																			<option value="${options.countryCode}" ${user.countryCode eq options.countryCode ?'selected':''}>${options.countryCode}</option>
+																		</c:forEach>
+																	</select>
+															</div>
+															<div class=" col-md-6">
+																<input name="mobile" type="number" class="form-control"
+																	pattern="[1-9]{1}[0-9]{9}"
+																	title="Enter 10 digit mobile number"
+																	placeholder="Mobile No."
 																	required>
 															</div>
-															<div class="form-group">
-																<input name="address" type="text" class="form-control"
-																	placeholder="Address"
-																	required>
-															</div>
-															<div class="form-group">
-																<input name="age" type="number" class="form-control"
-																	placeholder="Age"
-																	required>
-															</div>
-															<div class="form-group">
-																<input name="mobile" type="tel" class="form-control"
-																	placeholder="Mobile Number" 
-																	required>
-															</div>
-															<div class="form-group">
-																<input name="email" type="email" class="form-control"
-																	placeholder="Email Id" >
-															</div>
-														
-															<div class="form-group">
+														</div>
+													</div>
+													
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+													<div class="form-group"></div>
+														<div class="form-group">
 																<select name="category" id="category" class="form-control">
 																	<option value="">-Select Category-</option>
 																	<c:forEach var="options" items="${categoryList}"
@@ -133,19 +148,20 @@ $(document).ready(function(){
 																	 </optgroup>
 																</select>
 															</div>
-															<div class="form-group">
-																<input name="description" type="text" class="form-control"
-																	placeholder="Description" >
-															</div>
+																<div class="form-group">
+															<textarea class="form-control" rows="5" id="description" placeholder="Description"
+																name="description"></textarea>
+														</div>
+													</div>
 
-															<button
+													<button
 																class="btn btn-primary waves-effect waves-light col-md-offset-9 col-md-3"
 																type="submit">Book Appointment</button>
-														</form>
-													</div>
 												</div>
-												
-												</div>	
+												</form>
+											</div>
+											
+
 									</div>
 								</div>
 							</div>
@@ -154,7 +170,6 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 
 </html>

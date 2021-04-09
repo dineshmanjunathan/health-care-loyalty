@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hc.app.entity.Appointment;
 import com.hc.app.entity.Category;
+import com.hc.app.entity.CountryCode;
 import com.hc.app.entity.DoctorDetails;
 import com.hc.app.entity.UserMaster;
 import com.hc.app.model.AppointmentRepository;
 import com.hc.app.model.CategoryCodeRepository;
+import com.hc.app.model.CountryCodeRepository;
 import com.hc.app.model.UserRepository;
 import com.hc.app.vo.AppointmentVo;
 import com.hc.app.vo.GuestAppointmentVo;
@@ -32,6 +34,9 @@ public class AppointmentController {
 
 	@Autowired
 	private CategoryCodeRepository categoryCodeRepository;
+	
+	@Autowired
+	private CountryCodeRepository countryCodeRepository;
 
 	@RequestMapping("/appoinment")
 	public String appoinment(HttpServletRequest request,ModelMap model) { 
@@ -167,6 +172,8 @@ public class AppointmentController {
 	public String guestAppointment(HttpServletRequest request,ModelMap model) {
 		Iterable<Category> categoryList = categoryCodeRepository.findAll();
 		model.addAttribute("categoryList", categoryList); 
+		Iterable<CountryCode> countryCodeList = countryCodeRepository.findAll();
+		model.addAttribute("countryCodeList", countryCodeList);
 		return "guestAppointment";
 	}
 
@@ -184,7 +191,6 @@ public class AppointmentController {
 		return "login";
 	}
 
-
 	private Appointment prepareAppointment(final GuestAppointmentVo guestAppointmentVo, final UserMaster insertedUserMaster) {
 		Appointment appointment=new Appointment();
 		appointment.setUserMaster(insertedUserMaster);
@@ -196,6 +202,7 @@ public class AppointmentController {
 		appointment.setDesciption(guestAppointmentVo.getDescription());
 		return appointment;
 	}
+	
 	private UserMaster prepareUserMaster(final GuestAppointmentVo guestAppointmentVo) {
 		UserMaster userMaster = new UserMaster();
 		userMaster.setName(guestAppointmentVo.getName());
@@ -203,6 +210,7 @@ public class AppointmentController {
 		userMaster.setAge(guestAppointmentVo.getAge());
 		userMaster.setMobile(guestAppointmentVo.getMobile());
 		userMaster.setEmail(guestAppointmentVo.getEmail());
+		userMaster.setCountryCode(guestAppointmentVo.getCountryCode());
 		return userMaster;
 	}
 }

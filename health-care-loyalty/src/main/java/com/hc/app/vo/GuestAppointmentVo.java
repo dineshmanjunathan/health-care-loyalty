@@ -11,6 +11,7 @@ public class GuestAppointmentVo {
 	private String appointmentDate;
 	private String appointmentTime;
 	private String description;
+	private String countryCode;
 	
 	public String getName() {
 		return name;
@@ -71,5 +72,11 @@ public class GuestAppointmentVo {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getCountryCode() {
+		return countryCode;
+	}
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
 	}	
 }
