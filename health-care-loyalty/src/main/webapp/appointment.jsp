@@ -108,6 +108,9 @@ $(document).ready(function(){
 															
 															<div class="form-group"> 
 															<label>Patient Address : </label>${user.address }
+															</div>
+															<div class="form-group"> 
+															<label>Patient Id : </label>${user.id }
 															</div>		
 															<input type="hidden" id="patientName" name ="patientName" value="${user.name }">
 															<input type="hidden" id="patientMobile" name ="patientMobile" value="${user.mobile }">
@@ -166,6 +169,11 @@ $(document).ready(function(){
 																	<option value="05.45pm to 06.30pm">05.45pm to 06.30pm</option>
 																	 </optgroup>
 																</select>
+															</div>
+															
+															<div class="form-group">
+																<input name="description" type="text" class="form-control"
+																	placeholder="Description" >
 															</div>
 
 															<button

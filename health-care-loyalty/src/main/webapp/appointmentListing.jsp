@@ -65,9 +65,9 @@
 												<td>${details.userMaster.mobile}</td>
 												<td>${details.doctorDetails.name} [${details.doctorDetails.category.categoryDesc}]</td>
 												<td>${details.appointmentDate} [${details.appointmentTime}]</td>
-                                                <td><a href="<c:url value='/appointment/edit?id=${details.userMaster.id}' />"><center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a>
+                                                <td><a href="<c:url value='/appointment/edit?id=${details.id}' />"><center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a>
 		        								 <a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" 
-		        								 href="<c:url value='/appointment/delete?id=${details.userMaster.id}' />" >
+		        								 href="<c:url value='/appointment/delete?id=${details.id}' />" >
 		        								  <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 
 		        								  
 		        								  
